@@ -31,27 +31,28 @@ Each incident is introduced in a controlled way and handled as it would be in a 
 8. Document the root cause and final outcome
 9. Close the ticket with clear technical notes
 
-The purpose is not only to show the final fix, but also to demonstrate the reasoning and documentation behind it.
+The purpose is not only to show the final fix, but also to demonstrate the reasoning and documentation behind it. The first DNS incident (HD-001 / HD-1) has been executed and documented; the remaining incident scenarios are planned.
 
 ---
 
 ## What This Project Demonstrates
 
-- Incident triage and prioritisation
-- Help Desk and Service Desk workflows
-- Jira Service Management ticket documentation
-- Windows 11 troubleshooting
-- Hyper-V virtual machine administration
-- Network and DNS investigation
-- Printer troubleshooting
-- Disk-space analysis
-- Shared-folder permissions
-- Password-reset procedures
-- Root-cause analysis
-- Technical evidence collection
-- User-focused communication
-- Resolution verification
-- Knowledge-base documentation
+**Completed and documented:**
+- A simulated L1 incident lifecycle using Jira Service Management
+- Windows 11 DNS troubleshooting
+- Separating IP connectivity from name resolution
+- `ipconfig`, `ping`, `nslookup` and DNS configuration checks
+- Correcting an invalid DNS resolver and verifying recovery
+- Root-cause notes, evidence collection and limitations
+
+**Planned scenarios (not yet completed):**
+- No Internet connectivity / DHCP and gateway investigation
+- Printer offline and print-spooler troubleshooting
+- Low disk-space investigation
+- Shared-folder and NTFS permissions
+- Secure password-reset request handling
+
+The planned scenarios are learning targets, not completed experience.
 
 ---
 
@@ -104,14 +105,14 @@ Each ticket follows the same documentation structure:
 
 | ID | Incident or Request | Type | Current Status |
 |---|---|---|---|
-| [HD-001](tickets/HD-001-unable-to-access-websites.md) | Unable to access websites | Incident | In progress |
+| [HD-001](tickets/HD-001-unable-to-access-websites.md) | Unable to access websites (DNS misconfiguration) | Incident | **Completed case study** |
 | [HD-002](tickets/HD-002-no-internet-connection.md) | No Internet connection | Incident | Planned |
 | [HD-003](tickets/HD-003-printer-offline.md) | Printer appears offline | Incident | Planned |
 | [HD-004](tickets/HD-004-disk-full-low-disk-space.md) | Disk full / low disk-space warning | Incident | Planned |
 | [HD-005](tickets/HD-005-access-denied-shared-folder.md) | Access denied to a shared folder | Incident | Planned |
 | [HD-006](tickets/HD-006-password-reset-request.md) | Password reset request | Service request | Planned |
 
-> Ticket statuses will be updated as each scenario is executed, verified and documented with evidence.
+> **Status rule:** a scenario is marked completed only after execution, verification and evidence. HD-001 is complete as a lab case study; the Jira issue is still recorded as open in its ticket snapshot and should be closed in Jira separately if that action has not yet been performed.
 
 ---
 
@@ -249,18 +250,19 @@ A knowledge-base article should be written so that another support technician ca
 - [ ] Document the complete VM configuration
 - [ ] Add reusable PowerShell support scripts
 
-### Phase 2 — First Completed Incident
+### Phase 2 — First Completed Incident (HD-001)
 
-- [ ] Inject the first controlled fault
-- [ ] Create or update the Jira ticket
-- [ ] Reproduce the issue
-- [ ] Record the initial evidence
-- [ ] Investigate possible causes
-- [ ] Apply the resolution
-- [ ] Verify the user workflow
-- [ ] Add screenshots or video evidence
-- [ ] Document the final root cause
-- [ ] Close the ticket
+- [x] Inject a controlled DNS fault (`192.0.2.1`)
+- [x] Create and document the Jira incident
+- [x] Reproduce the website-access failure
+- [x] Capture baseline and fault-state evidence
+- [x] Separate IP connectivity from DNS resolution
+- [x] Restore DNS to `8.8.8.8` and flush the resolver cache
+- [x] Verify DNS resolution and browser recovery
+- [x] Document root cause, resolution, evidence and limitations
+- [ ] Confirm Jira issue closure (the ticket snapshot currently records it as open)
+
+**Detailed case and evidence:** [HD-1 DNS misconfiguration lab](https://github.com/anudoranador87/it-support-labs/tree/master/labs/01-dns-misconfiguration).
 
 ### Phase 3 — Additional Incidents
 
@@ -283,9 +285,7 @@ A knowledge-base article should be written so that another support technician ca
 
 ## Project Status
 
-**Current status:** In progress
-
-The project is currently focused on validating the base Windows 11 environment and completing **HD-001** from start to finish:
+**Current status:** In progress overall. The base Windows 11 support environment and the first practical incident, **HD-001 (DNS misconfiguration)**, are documented. Additional scenarios and knowledge-base articles remain planned. The practical case is complete; the Jira issue closure is tracked separately:
 
 ```text
 Controlled fault injection
